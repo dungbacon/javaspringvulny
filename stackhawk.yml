@@ -1,28 +1,25 @@
+# -- stackhawk configuration for Javaspringvulny_1 --
 app:
-  applicationId: ${APP_ID:f5ee2290-3383-415c-96c7-ee0a398d90b9}
-  env: ${APP_ENV:Development}
-  host: ${APP_HOST:https://localhost:9000}
-  waitForAppTarget:
-    path: /
-    waitTimeoutMillis: 200000
-    pollDelay: 500
-  excludePaths:
-    - "/logout"
-  antiCsrfParam: "_csrf"
-  authentication:
-    loggedInIndicator: "\\QSign Out\\E"
-    loggedOutIndicator: ".*Location:.*/login.*"
-    usernamePassword:
-      type: FORM
-      loginPath: /login
-      loginPagePath: /login
-      usernameField: username
-      passwordField: password
-      scanUsername: "janesmith"
-      scanPassword: "password"
-    cookieAuthorization:
-      cookieNames:
-        - "JSESSIONID"
-    testPath:
-      path: /search
-      success: "HTTP.*200.*"
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: f3eae5e4-5b19-44f2-ba70-3368ba6133ce # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Development # (required)
+  # -- The url of your application to scan --
+  host: https://localhost:9000 # (required)
+
+
+# -- Customized Configuration for GraphQL/SOAP/OpenAPI, add here --
+  # openApiConf:
+  #   path: /swagger.json # OR...
+#       filePath: openApi.json
+  # autoPolicy: true
+  # autoInputVectors: true
+  # Configuration Docs: https://docs.stackhawk.com/hawkscan/configuration/
+
+# -- If Authenticated Scanning is needed, add here --
+  # Authenticated Scanning Docs: https://docs.stackhawk.com/hawkscan/authenticated-scanning.html
+  # Authenticated Scanning Repo: https://github.com/kaakaww/scan-configuration/tree/main/Authentication
+
+# -- Help Section --
+  # Docs: https://docs.stackhawk.com/
+  # Contact Support: support@stackhawk.com
